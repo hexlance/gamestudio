@@ -81,12 +81,49 @@
             background-color: #e74c3c;
             color: white;
         }
+
+        #leaderboard {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        #killFeed {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .notification {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        #audioToggle {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #34495e;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #audioToggle:hover {
+            background: #2c3e50;
+        }
     </style>
 </head>
 <body>
     <div id="connectionStatus" class="disconnected">Connecting...</div>
+    <button id="audioToggle">🔊 Audio ON</button>
     
-    <h1>🚗 Tank.io</h1>
+    <h1>🚗 Tank.io ENHANCED</h1>
     
     <div id="gameInfo">
         <div class="info-panel">
@@ -99,11 +136,29 @@
         </div>
         <div class="info-panel">
             <h3>Players</h3>
-            <div id="playerCount">0</div>
+            <div id="playerCount">0/8</div>
+        </div>
+        <div class="info-panel">
+            <h3>K/D</h3>
+            <div id="kd">0.00</div>
+        </div>
+        <div class="info-panel">
+            <h3>Active Power-ups</h3>
+            <div id="activePowerUps">None</div>
         </div>
     </div>
 
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <canvas id="gameCanvas" width="1200" height="800"></canvas>
+    
+    <div id="leaderboard" class="info-panel" style="position: absolute; top: 20px; left: 20px; min-width: 200px;">
+        <h3>🏆 Leaderboard</h3>
+        <div id="leaderboardList">Loading...</div>
+    </div>
+    
+    <div id="killFeed" style="position: absolute; top: 20px; right: 20px; width: 250px; background: rgba(52, 73, 94, 0.9); padding: 10px; border-radius: 8px;">
+        <h3 style="margin: 0 0 10px 0; color: #ecf0f1;">💥 Kill Feed</h3>
+        <div id="killFeedList"></div>
+    </div>
 
     <div id="controls">
         <h3>Controls</h3>
