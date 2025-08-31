@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tank.io - Multiplayer Tank Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+
+        #gameCanvas {
+            border: 3px solid #34495e;
+            background-color: #27ae60;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        #gameInfo {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .info-panel {
+            background-color: #34495e;
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 120px;
+        }
+
+        .info-panel h3 {
+            margin: 0 0 10px 0;
+            color: #ecf0f1;
+        }
+
+        #controls {
+            background-color: #34495e;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        #controls h3 {
+            margin-top: 0;
+            color: #ecf0f1;
+        }
+
+        .control-row {
+            margin: 10px 0;
+        }
+
+        #connectionStatus {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .connected {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .disconnected {
+            background-color: #e74c3c;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="connectionStatus" class="disconnected">Connecting...</div>
+    
+    <h1>🚗 Tank.io</h1>
+    
+    <div id="gameInfo">
+        <div class="info-panel">
+            <h3>Health</h3>
+            <div id="health">100</div>
+        </div>
+        <div class="info-panel">
+            <h3>Score</h3>
+            <div id="score">0</div>
+        </div>
+        <div class="info-panel">
+            <h3>Players</h3>
+            <div id="playerCount">0</div>
+        </div>
+    </div>
+
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <div id="controls">
+        <h3>Controls</h3>
+        <div class="control-row"><strong>WASD</strong> - Move tank</div>
+        <div class="control-row"><strong>Mouse</strong> - Aim</div>
+        <div class="control-row"><strong>Left Click / Space</strong> - Shoot</div>
+        <div class="control-row"><strong>Goal:</strong> Destroy other tanks to score points!</div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 
